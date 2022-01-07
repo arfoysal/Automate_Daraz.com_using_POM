@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import base.Base;
+import io.github.cdimascio.dotenv.Dotenv;
 import model.CommonMethods;
 import model.Locators;
 import model.Take_Screenshot;
@@ -22,6 +23,7 @@ public class Login {
 	CommonMethods commonMethods = new CommonMethods(driver);
 	HomePage homePage =  new HomePage(driver);
 	Timeout time = new Timeout(driver);
+	Dotenv dotenv = Dotenv.load();
 	//Take_Screenshot screenshot = new Take_Screenshot(driver);
 
 	@BeforeClass
@@ -41,8 +43,8 @@ public class Login {
 		commonMethods.clickOnButton(Locators.loginclick);
 		time.timeOut();
 		///screenshot.screenshot("Login page");
-		commonMethods.sendText(Locators.enterUserName, "01828695933");
-		commonMethods.sendText(Locators.enterPassword, "");
+		commonMethods.sendText(Locators.enterUserName, dotenv.get("phone_number"));
+		commonMethods.sendText(Locators.enterPassword, dotenv.get("password"));
 		commonMethods.clickOnButton(Locators.loginButtonClick);
 		time.timeOut();
 		base.tearDown();

@@ -7,8 +7,7 @@ import model.Locators;
 
 public class HomePage {
 	WebDriver driver;
-	CommonMethods cm = new CommonMethods(driver);
-
+	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -22,7 +21,7 @@ public class HomePage {
 
 	}
 	public String title() {
-		return cm.getTitle();
+		return driver.getTitle();
 	}
 
 }
